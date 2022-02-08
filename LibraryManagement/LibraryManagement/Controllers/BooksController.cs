@@ -3,11 +3,13 @@ using System.Threading.Tasks;
 using AutoMapper;
 using DomainModels.Dtos;
 using DomainModels.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Repository.Repository.Abstarction;
 
 namespace LibraryManagement.Controllers
 {
+    [Authorize(Roles = "Moderator")]
     [Route("api/[controller]")]
     [ApiController]
     public class BooksController : ControllerBase
