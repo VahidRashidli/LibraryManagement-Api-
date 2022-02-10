@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using DomainModels.Models.Base;
 using Microsoft.EntityFrameworkCore;
@@ -12,9 +14,11 @@ namespace Repository.Repository.Implementation
         where T:class,IEntity
     {
         private readonly AppDbContext _dbContext;
+        private readonly IQueryable<T> _iQuerable;
         public EntityFrameworkCore(AppDbContext dbContext)
         {
             _dbContext = dbContext;
+            _iQuerable = _dbContext.Set<T>();
         }
         public async Task<bool> AddAsync(T item)
         {
@@ -82,6 +86,22 @@ namespace Repository.Repository.Implementation
             {
                 return false;
             }
+        }
+        public IQueryable<T> GetIQuerable()
+        {
+            return _iQuerable.Where(i => !i.IsDeleted).AsNoTracking();
+        }
+        public async Task<IList<T>> GetAllFilteredAsync(Expression<Func<T, bool>> expression,
+        IList<string> objectsToInclude=null)
+        {
+            if (objectsToInclude != null)
+            {
+                foreach (string item in objectsToInclude)
+                {
+                    _iQuerable.Include(item);
+                }
+            }
+            return await _iQuerable.Where(expression).ToListAsync();
         }
     }
 }

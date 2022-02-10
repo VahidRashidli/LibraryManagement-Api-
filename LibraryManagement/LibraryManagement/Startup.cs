@@ -3,6 +3,9 @@ using System.Text;
 using Authentication.Models;
 using Authentication.Services;
 using DomainModels.Models;
+using LibraryManagement.EmailHandler.Configuration;
+using LibraryManagement.EmailHandler.Services.Abstraction;
+using LibraryManagement.EmailHandler.Services.Implementation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -50,7 +53,8 @@ namespace LibraryManagement
 
             services.AddScoped(typeof(IRepository<>),typeof(EntityFrameworkCore<>));
             services.AddAutoMapper(typeof(MapperProfile));
-
+            services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
+            services.AddTransient<IMailService, MailService>();
 
             //Configuration from AppSettings
             services.Configure<JwtSetting>(Configuration.GetSection("JWT"));

@@ -76,3 +76,6 @@ C:\Users\User\OneDrive\Рабочий стол\LibraryManagement\LibraryManageme
 C:\Users\User\OneDrive\Рабочий стол\LibraryManagement\LibraryManagement\LibraryManagement\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\User\OneDrive\Рабочий стол\LibraryManagement\LibraryManagement\LibraryManagement\bin\Debug\net5.0\Authentication.dll
 C:\Users\User\OneDrive\Рабочий стол\LibraryManagement\LibraryManagement\LibraryManagement\bin\Debug\net5.0\Authentication.pdb
+C:\Users\User\OneDrive\Рабочий стол\LibraryManagement\LibraryManagement\LibraryManagement\bin\Debug\net5.0\MailKit.dll
+C:\Users\User\OneDrive\Рабочий стол\LibraryManagement\LibraryManagement\LibraryManagement\bin\Debug\net5.0\MimeKit.dll
+C:\Users\User\OneDrive\Рабочий стол\LibraryManagement\LibraryManagement\LibraryManagement\bin\Debug\net5.0\BouncyCastle.Crypto.dll

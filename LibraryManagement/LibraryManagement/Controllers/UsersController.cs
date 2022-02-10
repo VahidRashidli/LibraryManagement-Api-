@@ -27,7 +27,7 @@ namespace LibraryManagement.Controllers
             }
             return Ok(result);
         }
-        [HttpGet]
+        [HttpPost("getToken")]
         public async Task<IActionResult> GetTokenAsync(TokenRequestDto model)
         {
             var result = await _userService.GetTokenAsync(model);
